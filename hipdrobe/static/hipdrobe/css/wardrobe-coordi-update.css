@@ -1,0 +1,75 @@
+/*
+ * wardrobe-coordi.css
+ */
+
+.wrapper {
+    color: black;
+}
+
+p {
+    font-family: 'Nanum Pen Script', cursive;
+    font-weight: 100;
+    font-size: medium;
+}
+
+.content-main {
+    background-image: url(/static/hipdrobe/img/bg_index01.jpg);
+    padding: 0px 5% 5%;
+    color: white;
+}
+
+
+.win-wrapper {
+    width: 100%;
+}
+
+.heading {
+    color: white;
+}
+
+.carousel-item img {
+    max-width: 30%;
+    height: auto;
+    position: relative;
+    top: 5%;
+    left: 3%;
+    right: 0;
+    bottom: 0;
+    border-right: solid 0.5px lightgray;
+    cursor: pointer;
+    float: left;
+    vertical-align:middle;
+}
+
+
+.btn-wrapper {
+    text-align: right;
+}
+
+.btn-group-bottom {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
+    display: inline-block;
+}
+
+.coord-win {
+    margin-bottom: 0px !important;
+}
+
+.content-info {
+    text-align: center;    
+}
+
+.content-info div {
+    border: 1px solid lightgray;
+}
+
+.content-info p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 5em;
+    color: lightgray;
+    font-weight: 900;
+    margin-bottom: 25px 0px;
+}

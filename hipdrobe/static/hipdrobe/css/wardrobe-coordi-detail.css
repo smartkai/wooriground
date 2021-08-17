@@ -1,0 +1,117 @@
+/*
+ * wardrobe-coordi.css
+ */
+
+.wrapper {
+    color: black;
+}
+
+p {
+    font-family: 'Nanum Pen Script', cursive;
+    font-weight: 100;
+    font-size: medium;
+}
+
+.content-main {
+    background-image: url(/static/hipdrobe/img/bg_index01.jpg);
+    padding: 0px 5% 5%;
+    color: white;
+}
+
+
+.detail-title, 
+.detail-content {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    text-align: left;
+    margin: auto;
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+.card-title {
+    color: black;
+}
+
+.card-group {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.card {
+    /* font-family: 'NanumGothic', sans-serif; */
+    margin: 10px;
+    border: solid 1px black;
+}
+
+.card .coord-post {
+    border-radius: 0;
+    border-style: none;
+    border-top-right-radius: calc(.25rem - 1px);
+    border-bottom: solid 0.5px lightgray;
+}
+
+.card .coord-post::after {
+    border-radius: 0;
+}
+
+.btn-wrapper {
+    text-align: right;
+}
+
+.btn-group {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
+    display: inline-block;
+}
+
+.detail-title {
+ 
+}
+
+.detail-content {
+
+}
+
+.win-wrapper {
+    width: 100%;
+}
+
+.heading {
+    color: white;
+}
+
+.carousel-item img {
+    max-width: 30%;
+    height: auto;
+    position: relative;
+    top: 5%;
+    left: 3%;
+    right: 0;
+    bottom: 0;
+    border-right: solid 0.5px lightgray;
+    cursor: pointer;
+    float: left;
+    vertical-align:middle;
+}
+
+
+.content-info {
+    text-align: center;    
+}
+
+.content-info div {
+    border: 1px solid lightgray;
+}
+
+.content-info p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 5em;
+    color: lightgray;
+    font-weight: 900;
+    margin-bottom: 25px 0px;
+}

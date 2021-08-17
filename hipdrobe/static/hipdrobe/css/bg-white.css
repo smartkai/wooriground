@@ -1,0 +1,39 @@
+/*
+ * bg-white.css
+ */
+
+
+
+#sidebar ul li {
+    color: black;
+
+}
+
+#sidebar ul li a {
+    font-weight: 500;
+}
+
+#sidebar ul p {
+    color: black;
+}
+
+.brand-del {
+    color: gray;
+}
+
+.brand-sub {
+    color: black;
+}
+
+#sidebar ul ul a {
+    padding-left: 30px !important;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.meta-info2 span {
+    color: white;
+}
+
+.letter {
+    color: black;
+}

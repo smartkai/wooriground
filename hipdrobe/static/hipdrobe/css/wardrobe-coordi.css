@@ -1,0 +1,87 @@
+/*
+ * wardrobe-coordi.css
+ */
+
+.wrapper {
+    color: black;
+}
+
+.content-main {
+    background-image: url(/static/hipdrobe/img/bg_index01.jpg);
+    padding: 0px 5% 0px;
+}
+
+.heading {
+    color: white;
+}
+
+.carousel-item img {
+    max-width: 30%;
+    height: auto;
+    position: relative;
+    top: 5%;
+    left: 3%;
+    right: 0;
+    bottom: 0;
+    border-right: solid 0.5px lightgray;
+    cursor: pointer;
+    float: left;
+    vertical-align:middle;
+}
+
+.add_button_box {
+    text-align: center;
+}
+
+#id-coordi-timeline a.nav-link {
+    color: #28a745;
+}
+
+#id-coordi-timeline a.nav-link.daily {
+    color: #007bff;
+}
+
+.card {
+    /* font-family: 'NanumGothic', sans-serif; */
+    margin: 10px;
+    border: solid 1px black;
+}
+
+.card .coord-post {
+    border-radius: 0;
+    border-style: none;
+    border-top-right-radius: calc(.25rem - 1px);
+    border-bottom: solid 0.5px lightgray;
+}
+
+.card .coord-post::after {
+    border-radius: 0;
+}
+
+.spin-page-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    visibility: collapse;
+    transition: all 1s;
+}
+
+.content-info {
+    text-align: center;    
+}
+
+.content-info div {
+    border: 1px solid lightgray;
+}
+
+.content-info p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 5em;
+    color: lightgray;
+    font-weight: 900;
+    margin-bottom: 25px 0px;
+}
+
+.card .coord-post {
+    
+}
