@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}우리그라운드CoP-코디 작성{% endblock %}
+{% block local_head_resources %}
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/narrow.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/bg-white.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/char-win.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/wardrobe-coordi.css' %}">
+{% endblock %}
+{% block bg %}
+{% endblock %}
+{% block content %}
+  {% include 'hipdrobe/include/_wardrobe-link.html' %}
+  <div class="container-fluid content-wrap ctnt-center">
+    <!-- main content section -->
+    <div class="content-main">
+      <br>
+      <div class="row mb-3">
+        <div class="col-8">
+          <h3 class="heading">My Coordi</h3>
+        </div>
+        <div class="col-4" style="text-align: right;">
+          <button class="btn btn-light" onclick="openAddItemDialog(event)">아이템 추가</button>
+        </div>
+      </div>
+
+
+      <!-- 부위 설정 / 코디하기 -->
+      <div class="row mb-3">
+        <div class="col-12 text-center">
+          {% include 'hipdrobe/include/_char-win-control.html' %}
+          {% include 'hipdrobe/include/_char-win.html' %}
+        </div>
+      </div>
+
+      <!-- 내 저장된 코디 타임라인 -->
+      <br>
+      <h3 class="heading">My Coordi Timeline</h3>
+      <ul class="nav nav-tabs" id="id-coordi-timeline">
+        <li class="nav-item">
+          <a class="nav-link active daily" data-toggle="tab" href="#id-coordi-timeline-daily">데일리룩 타임라인</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#id-coordi-timeline-normal">코디 타임라인</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <!-- 데일리룩 타임라인 -->
+        <div class="tab-pane fade show active" id="id-coordi-timeline-daily">
+        </div>
+
+        <!-- 그냥 코디 타임라인 -->
+        <div class="tab-pane fade" id="id-coordi-timeline-normal">
+        </div>
+      </div>
+      <div class="spin-page-bottom">
+        <div class="spinner-border text-dark" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+
+    </div>
+
+
+    
+
+    <!-- info section -->
+    <div class="content-info">
+      <div>
+        <p>T</p>
+        <p>B</p>
+        <p>D</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block content-bottom %}
+  {% include 'hipdrobe/include/_wardrobe-additem.html' %}
+  {% include 'hipdrobe/include/_items_modal.html' %}
+{% endblock %}
+{% block local_body_resources %}
+  <script src="{% static 'hipdrobe/js/apis-additem.js' %}"></script>
+  <script src="{% static 'hipdrobe/third-party-etc/displace.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/char-win.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/apis-cruditem.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/wardrobe-coordi.js' %}"></script>
+{% endblock %}
+

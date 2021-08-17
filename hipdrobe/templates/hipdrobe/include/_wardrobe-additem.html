@@ -1,0 +1,203 @@
+<!-- Modal -->
+{% load static %}
+<div class="modal fade" id="id-modal-additem" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title add" id="staticBackdropLabel">새 아이템 등록 <span class="legend">(<i class="fas fa-asterisk"></i>: 필수)</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="id-form-additem">
+          {% csrf_token %}
+          <div class="row cls-additem-firstrow">
+            <div class="col-3">
+              <div class="form-group">
+                <label for="id-additem-part"><i class="fas fa-asterisk"></i> 부위</label>
+                <select name="part" class="form-control custom-select custom-select-lg" id="id-additem-part"
+                  onchange="onPartChange('add')" required>
+                  <option value="" selected><span style=>선택하세요</span></option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="id-additem-cate1"><i class="fas fa-asterisk"></i> 카테고리 I</label>
+                    <select name="cate1" class="form-control custom-select custom-select-lg" id="id-additem-cate1"
+                      onchange="onCate1Change('add')" required>
+                      <option value="" selected>선택하세요</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="form-group">
+                    <label for="id-additem-cate2"><i class="fas fa-asterisk"></i> 카테고리 II</label>
+                    <select name="cate2" class="form-control custom-select custom-select-lg mb-3" id="id-additem-cate2"
+                      required>
+                      <option value="" selected>선택하세요</option>
+                    </select>
+                </div>
+            </div>
+          </div><!-- 첫 줄 end-->
+          <div class="divider">
+            <span>선택 사항</span><hr>
+          </div>
+          <div class="row mb-3">
+            <div class="col-3">
+              <label for="id-additem-color">색상</label>
+              <input type="color" name="color" class="form-control" id="id-additem-color"/>
+            </div>
+            <div class="col-4">
+              <label>착용 가능 계절</label>
+              <div class="form-control">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="season" id="id-additem-season1" value="봄" checked>
+                  <label class="form-check-label" for="id-additem-season1">봄</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="season" id="id-additem-season2" value="여름" checked>
+                  <label class="form-check-label" for="id-additem-season2">여름</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="season" id="id-additem-season3" value="가을" checked>
+                  <label class="form-check-label" for="id-additem-season3">가을</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="season" id="id-additem-season4" value="겨울" checked>
+                  <label class="form-check-label" for="id-additem-season4">겨울</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-5">
+              <label>무늬</label>
+              <div class="form-control">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="pattern" id="id-additem-pattern1" value="solid" checked>
+                  <label class="form-check-label" for="id-additem-pattern1">Solid</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="pattern" id="id-additem-pattern2" value="stripe">
+                  <label class="form-check-label" for="id-additem-pattern2">Stripe</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="pattern" id="id-additem-pattern3" value="dot">
+                  <label class="form-check-label" for="id-additem-pattern3">Dot</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="pattern" id="id-additem-pattern4" value="print">
+                  <label class="form-check-label" for="id-additem-pattern4">Printing</label>
+                </div>
+              </div>
+            </div>
+          </div><!-- 둘째 줄 end-->
+
+          <div class="row mb-3">
+            <div class="col-3">
+              <label>색상 타입</label>
+              <div class="form-control">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="colortype" id="id-additem-colortype1" value="true" checked>
+                  <label class="form-check-label" for="id-additem-colortype1">단색</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="colortype" id="id-additem-colortype2" value="false">
+                  <label class="form-check-label" for="id-additem-colortype2">복합</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <label for="id-additem-texture">재질</label>
+              <input class="form-control" type="text" name="texture" id="id-additem-texture">
+            </div>
+            <div class="col-2">
+              <label for="id-additem-brand">브랜드</label>
+              <input class="form-control" type="text" name="brand" id="id-additem-brand">
+            </div>
+            <div class="col-5">
+              <label for="id-additem-desc">메모</label>
+              <textarea rows="3" class="form-control" name="descript" id="id-additem-desc" placeholder="메모를 작성하세요."></textarea>
+            </div>
+          </div><!-- 셋째 줄 end-->
+          <input type="hidden" name="url" id="id-additem-url"/>
+        </form>
+        <form id="id-form-image">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-3">
+              <div class="row mb-3">
+                <div class="col-12" id="add_item_pic">
+                  <label for="id-input-image"><i class="fas fa-asterisk"></i> 옷 사진 등록</label>
+                  <div class="form-group">
+                    <input class="form-control-file btn btn-info" type="file" accept="image/*" name="image" id="id-input-image"
+                      onchange="onImageFileChange()"/>
+                  </div>
+                  <!-- <label for="id-input-image"><i class="fas fa-asterisk"></i> 옷 사진 등록</label>
+                  <img src='/hipdrobe/static/hipdrobe/img/bg-winter.png' width='100%'/> -->
+                  <!--
+                  <button type="button" class="btn btn-primary" onclick="uploadImage(event)" id="id-btn-image" disabled>업로드</button>
+                  -->
+                </div>
+              </div>
+              <!--
+              <div class="row">
+                <div class="col-12">
+                  <div id="id-div-thumbnail">
+                    <img src="" alt="썸네일" id="id-additem-thumbnail"/>
+                  </div>
+                </div>
+              </div>
+              -->
+            </div>
+            <div class="col-9" id="id-div-imgselect">
+              <label><i class="fas fa-asterisk"></i> 이미지 선택</label>
+              <div class="form-control">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="custom-control custom-radio">
+                      <input class="custom-control-input" name="image-select" type="radio" id="id-additem-image1" onchange="onImageSelect(this)" value="0">
+                      <label class="custom-control-label" for="id-additem-image1">원본</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="custom-control custom-radio">
+                      <input class="custom-control-input" name="image-select" type="radio" id="id-additem-image2" onchange="onImageSelect(this)" value="1">
+                      <label class="custom-control-label" for="id-additem-image2">배경 제거</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div id="id-div-preview-1" class="cls-div-preview">
+                      <img src="{% static 'hipdrobe/img/no-image.png' %}" alt=" 프리뷰 이미지1" id="id-additem-preview1"/>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div id="id-div-preview-2" class="cls-div-preview">
+                      <img src="{% static 'hipdrobe/img/no-image.png' %}" alt=" 프리뷰 이미지2" id="id-additem-preview2"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">사진이 마음에 들지 않으세요?</h4>
+                <span>아래 사이트에 가시면 거의 완벽하게 배경을 제거하실 수 있습니다.</span>
+                <hr>
+                <span class="mb-0"><a href="https://www.remove.bg/" class="alert-link">remove.bg</a></span><br>
+                <span class="mb-0"><a href="https://online.photoscissors.com/" class="alert-link">PhotoScissors Online</a></span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-primary" id="id-btn-additem">등록</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

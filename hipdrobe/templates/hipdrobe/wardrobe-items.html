@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}우리그라운드CoP-내 옷장 보기{% endblock %}
+{% block local_head_resources %}
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/narrow.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/bg-white.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/wardrobe-items.css' %}">
+{% endblock %}
+{% block bg %}
+{% endblock %}
+{% block content %}
+  {% include 'hipdrobe/include/_wardrobe-link.html' %}
+  <div class="container-fluid content-wrap ctnt-center">
+    <!-- main content section -->
+    <div class="content-main">
+      <div class="row mb-3">
+        <div class="col-8">
+          <h3 class="heading">My Hipdrobe</h3>
+        </div>
+        <div class="col-4" style="text-align: right;">
+          <button class="btn btn-dark" onclick="openAddItemDialog(event)">아이템 추가</button>
+        </div>
+      </div>
+      <div class="cont_wrap">
+        <input type="button" class="fun-btn" id="item_top" value="상의"> <br>
+        <input type="button" class="fun-btn" id="item_hat" value="모자"> <br><br><br>
+        <input type="button" class="fun-btn" id="item_bag" value="가방"> <br><br><br>
+        <input type="button" class="fun-btn" id="item_btm" value="하의"> 
+        <input type="button" class="fun-btn" id="item_out" value="아우터"> <br><br>
+        <input type="button" class="fun-btn" id="item_acc" value="액세서리"> <br><br><br>
+        <input type="button" class="fun-btn" id="item_else" value="기타"><br><br>
+        <input type="button" class="fun-btn" id="item_sock" value="양말"><br>
+        <input type="button" class="fun-btn" id="item_shoe" value="신발">
+        
+      </div>
+        
+    </div>
+
+    <!-- info section -->
+    <div class="content-info">
+      <h4>나의 패션아이템 현황</h4>
+      <br>
+
+      {% if not user.is_active  %}
+        <h5>로그인이 필요한 기능입니다.</h5>
+      {% endif %}
+
+      <h5>상의</h5>
+      <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar" style="width:{{top.avg}}%" aria-valuenow="{{top.avg}}" aria-valuemin="0" aria-valuemax="100">평균</div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar {% if top.avg > top.my %}bg-warning{% endif %}" role="progressbar" style="width: {{top.my}}%" aria-valuenow="{{top.my}}" aria-valuemin="0" aria-valuemax="100">{{user.username}}</div>
+      </div>
+      <br>
+
+      <h5>하의</h5>
+      <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar" style="width: {{bottom.avg}}%" aria-valuenow="{{bottom.avg}}" aria-valuemin="0" aria-valuemax="100">평균</div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar {% if bottom.avg > bottom.my %}bg-warning{% endif %}" role="progressbar" style="width: {{bottom.my}}%" aria-valuenow="{{bottom.my}}" aria-valuemin="0" aria-valuemax="100">{{user.username}}</div>
+      </div>
+      <br>
+
+      <h5>머리</h5>
+      <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar" style="width: {{head.avg}}%" aria-valuenow="{{head.avg}}" aria-valuemin="0" aria-valuemax="100">평균</div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar {% if head.avg > head.my %}bg-warning{% endif %}" role="progressbar" style="width: {{head.my}}%" aria-valuenow="{{head.my}}" aria-valuemin="0" aria-valuemax="100">{{user.username}}</div>
+      </div>
+      <br>
+
+      <h5>발</h5>
+      <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar" style="width: {{foot.avg}}%" aria-valuenow="{{foot.avg}}" aria-valuemin="0" aria-valuemax="100">평균</div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar {% if foot.avg > foot.my %}bg-warning{% endif %}" role="progressbar" style="width: {{foot.my}}%" aria-valuenow="{{foot.my}}" aria-valuemin="0" aria-valuemax="100">{{user.username}}</div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block content-bottom %}
+  {% include 'hipdrobe/include/_items_modal.html' %}
+  {% include 'hipdrobe/include/_detail_modal.html' %}
+  {% include 'hipdrobe/include/_wardrobe-additem.html' %}
+  {% include 'hipdrobe/include/_wardrobe-updateitem.html' %}
+{% endblock %}
+{% block local_body_resources %}
+  <script src="{% static 'hipdrobe/js/apis-additem.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/apis-updateitem.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/apis-cruditem.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/wardrobe-items.js' %}"></script>
+{% endblock %}
+

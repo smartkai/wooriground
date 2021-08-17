@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}타이틀{% endblock %}
+{% block local_head_resources %}
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/xxx.css' %}">
+{% endblock %}
+{% block bg %}
+{% endblock %}
+{% block content %}
+  <div class="container-fluid content-wrap">
+    <div class="content-main">
+      <h1>content-main</h1>
+      
+    </div>
+    <div class="content-info">
+      <h3>content-info</h3>
+
+    </div>
+  </div>
+{% endblock %}
+{% block local_body_resources %}
+  <script src="{% static 'hipdrobe/js/xxx.js' %}"></script>
+{% endblock %}
+

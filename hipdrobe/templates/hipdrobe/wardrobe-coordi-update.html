@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}우리그라운드CoP-코디 수정{% endblock %}
+{% block local_head_resources %}
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/narrow.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/bg-white.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/char-win.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/wardrobe-coordi-update.css' %}">
+{% endblock %}
+{% block bg %}
+{% endblock %}
+{% block content %}
+  {% include 'hipdrobe/include/_wardrobe-link.html' %}
+  <div class="container-fluid content-wrap ctnt-center">
+    <!-- main content section -->
+    <div class="content-main">
+      <br>
+      <div class="row mb-3">
+        <div class="col-8">
+          <h3 class="heading">My Coordi - Update
+            {% if data.is_daily %}
+              (데일리룩)
+            {% endif %}
+          </h3>
+        </div>
+      </div>
+
+      <!-- 부위 설정 / 코디하기 -->
+      <div class="row">
+        <div class="col-12 text-center">
+          {% include 'hipdrobe/include/_char-win-control.html' %}
+          {% include 'hipdrobe/include/_char-win.html' %}
+        </div>
+      </div>
+
+      <div class="row btn-wrapper">
+        <div class="btn-group-bottom">
+          <a href="javascript:history.back()" class="btn btn-primary">돌아가기</a>
+    
+        </div>
+      </div>
+    
+    </div>
+
+
+    
+
+    <!-- info section -->
+    <div class="content-info">
+      <div>
+        <p>T</p>
+        <p>B</p>
+        <p>D</p>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" value="{{data}}" id="hidden-data"/>
+</div>
+{% endblock %}
+{% block content-bottom %}
+  {% include 'hipdrobe/include/_wardrobe-additem.html' %}
+  {% include 'hipdrobe/include/_items_modal.html' %}
+{% endblock %}
+{% block local_body_resources %}
+  <script src="{% static 'hipdrobe/third-party-etc/displace.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/char-win.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/apis-additem.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/apis-cruditem.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/wardrobe-coordi-update.js' %}"></script>
+{% endblock %}
+

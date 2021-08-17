@@ -1,0 +1,58 @@
+{% load static %}
+<div class="modal fade" id="id-modal-post" tabindex="-1" role="dialog" aria-labelledby="코디 작성" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="id-coordi-save-title">코디 저장하기</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="mb-2 win-wrapper">
+          <div class="coord-win coord-post mb-4" id="id-div-post-win">
+
+          </div>
+        </div> 
+        <br>
+        <form>
+          <div class="form-group daily">
+            <label>▶ 언제 입으실건가요?</label>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="dayCheck1" name="daywhen" class="custom-control-input" data="0">
+              <label class="custom-control-label" for="dayCheck1">
+                  오늘의 데일리룩으로 저장&nbsp;&nbsp;<small id="id-sm-today"></small>
+              </label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="dayCheck2" name="daywhen" class="custom-control-input" data="1" checked>
+              <label class="custom-control-label" for="dayCheck2">
+                  내일의 데일리룩으로 저장&nbsp;&nbsp;<small id="id-sm-tomorrow"></small>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="id-post-input-title">▶ 제목</label>
+              <input type="text" class="form-control" placeholder="제목을 입력하세요." 
+                name="title" id="id-post-input-title"/>
+            </div>
+          <div class="form-group">
+              <label>▶ 본문 (개인 메모 / 포스팅)</label>
+              <textarea rows="3" class="form-control" placeholder="내용을 입력하세요." 
+                name="content" id="id-post-textarea"></textarea>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <div class="spinner-border text-dark" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <button type="button" class="btn btn-success" onclick="coordSubmit(event, true)" 
+          id="id-btn-coord-post">코디 저장하기</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>

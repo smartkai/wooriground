@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8">
+    {% load static %}
+		<title>우리그라운드CoP 회원가입</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="{% static 'hipdrobe/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css'%}">
+		<link rel="shortcut icon" href="{% static 'hipdrobe/favicon/favicon.ico' %}" type="image/x-icon">
+		<link rel="icon" href="{% static 'hipdrobe/favicon/favicon.ico' %}" type="image/x-icon">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'hipdrobe/css/signup.css'%}">
+	</head>
+
+{% if user.is_authenticated %}
+<script type="text/javascript">
+  alert('잘못된 접근입니다. \n회원가입을 위해서는 로그아웃이 필요합니다.')
+  window.location.href = '/';
+</script>
+{% else %}
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+				<div class="image-holder">
+					
+          <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0" style="width: 800px; height: 510px;">
+            <source src="{%static 'hipdrobe/img/regist_images/mov.mp4'%}">
+          </video>
+				</div>
+				<form method='post' action="{% url 'hipdrobe:signup'%}">
+					{%csrf_token%}
+          <h3>Sign up</h3>
+					{% for field in form %}
+					{{ field.label }}
+					{{field}}
+					{% endfor %}
+
+					<div>
+						<button type="submit">Register<i class="zmdi zmdi-arrow-right"></i></button>
+					</div>
+					<br>
+					<br>
+					<div style="float:right;">
+						<a href="{% url 'hipdrobe:index'%}" >Main</a>
+					</div>
+					<div style=" float: left;">
+						<a href="{% url 'hipdrobe:signin'%}" >Login</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+{%endif%}
+</html>

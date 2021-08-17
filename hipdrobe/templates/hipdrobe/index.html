@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}우리그라운드CoP{% endblock %}
+{% block local_head_resources %}
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/index.css' %}">
+{% endblock %}
+{% block bg %}
+  {% include 'hipdrobe/include/_bd-carousel.html' %}
+{% endblock %}
+{% block content %}
+  <div class="container-fluid content-wrap">
+    <div class="content-main">
+ 
+    </div>
+  </div>
+  
+{% endblock %}
+{% block content-bottom %}
+  <div class="container-fluid content-bottom">
+    <div class="content-bottom-elem">
+      <p class="p-head">
+        나만의 옷장에 아이템을 등록하고<br>
+        부위별로 설정해 보세요!
+      </p>
+      <p class="p-body">
+          머리 속으로 상상하는 것 보다<br>
+          훨씬 좋은 조합을 찾을 수 있을걸요?<br>
+          <i>Fashion Insight!</i>
+      </p>
+      <a href="{% url 'hipdrobe:items' %}"><ins><i>Go!</i></ins></a>
+    </div>
+    <hr>
+    <div class="content-bottom-elem">
+      <p class="p-head">
+        우리그라운드CoP가 제공하는 나만의 힙스탯!<br>
+        여러가지 재미있는 정보를 즐겨보세요!
+      </p>
+      <p class="p-body">
+          나의 레벨은? 나는 옷이 많은 편? 적은 편?<br>
+          나는 어떤 스타일의 옷을 주로 입을까?<br>
+          <i>정보가 쌓이면 유의미한 정보를 얻을 수 있어요!</i>
+      </p>
+      <a href="{% url 'hipdrobe:stat' %}"><ins><i>Go!</i></ins></a>
+    </div>
+    <hr>
+    <div class="content-bottom-elem">
+      <p class="p-head">
+        내가 가진 힙템들로 코디 포스트를 작성하고<br>
+        다른 사람들과 공유해보세요.
+      </p>
+      <p class="p-body">
+          내가 작성한 코디 포스트를 공유하고<br>
+          다른 사람의 코디 포스트를 참조해보세요.<br>
+          <i>안목이 늘면, Yo! 나도 패션리더!</i>
+      </p>
+      <a href="{% url 'hipdrobe:coordi' %}"><ins><i>Go!</i></ins></a>
+    </div>
+  </div>
+{% endblock %}
+{% block local_body_resources %}
+  <script src="{% static 'hipdrobe/js/index.js' %}"></script>
+{% endblock %}
+

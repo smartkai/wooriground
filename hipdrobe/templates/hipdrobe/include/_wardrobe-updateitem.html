@@ -1,0 +1,136 @@
+<!-- Modal -->
+{% load static %}
+<div class="modal fade" id="id-modal-updateitem" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title add" id="staticBackdropLabel">아이템 정보 수정 </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="id-form-updateitem" method="POST">
+          {% csrf_token %}
+          <div class="row cls-updateitem-firstrow">
+            <div class="col-3">
+              <div class="form-group">
+                <label for="id-updateitem-part"><i class="fas fa-asterisk"></i> 부위</label>
+                <select name="part" class="form-control custom-select custom-select-lg" id="id-updateitem-part"
+                  onchange="onPartChange('update')" required>
+                  <option value="" selected><span style=>선택하세요</span></option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="id-updateitem-cate1"><i class="fas fa-asterisk"></i> 카테고리 I</label>
+                    <select name="cate1" class="form-control custom-select custom-select-lg" id="id-updateitem-cate1"
+                      onchange="onCate1Change('update')" required>
+                      <option value="" selected>선택하세요</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="form-group">
+                    <label for="id-updateitem-cate2"><i class="fas fa-asterisk"></i> 카테고리 II</label>
+                    <select name="cate2" class="form-control custom-select custom-select-lg mb-3" id="id-updateitem-cate2"
+                      required>
+                      <option value="" selected>선택하세요</option>
+                    </select>
+                </div>
+            </div>
+          </div><!-- 첫 줄 end-->
+          <div class="divider">
+            <span>선택 사항</span><hr>
+          </div>
+          <div class="row mb-3">
+            <div class="col-3">
+              <label for="id-updateitem-color">색상</label>
+              <input type="color" name="color" class="form-control" id="id-updateitem-color"/>
+            </div>
+            <div class="col-4">
+              <label>착용 가능 계절</label>
+              <div class="form-control">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="season" id="id-updateitem-season1" value="봄" checked>
+                  <label class="form-check-label" for="id-updateitem-season1">봄</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="season" id="id-updateitem-season2" value="여름" checked>
+                  <label class="form-check-label" for="id-updateitem-season2">여름</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="season" id="id-updateitem-season3" value="가을" checked>
+                  <label class="form-check-label" for="id-updateitem-season3">가을</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="season" id="id-updateitem-season4" value="겨울" checked>
+                  <label class="form-check-label" for="id-updateitem-season4">겨울</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-5">
+              <label>무늬</label>
+              <div class="form-control">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="pattern" id="id-updateitem-pattern1" value="solid" checked>
+                  <label class="form-check-label" for="id-updateitem-pattern1">Solid</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="pattern" id="id-updateitem-pattern2" value="stripe">
+                  <label class="form-check-label" for="id-updateitem-pattern2">Stripe</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="pattern" id="id-updateitem-pattern3" value="dot">
+                  <label class="form-check-label" for="id-updateitem-pattern3">Dot</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                  <input class="form-check-input" type="radio" name="pattern" id="id-updateitem-pattern4" value="print">
+                  <label class="form-check-label" for="id-updateitem-pattern4">Printing</label>
+                </div>
+              </div>
+            </div>
+          </div><!-- 둘째 줄 end-->
+
+          <div class="row mb-3">
+            <div class="col-3">
+              <label>색상 타입</label>
+              <div class="form-control">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="colortype" id="id-updateitem-colortype1" value="true" checked>
+                  <label class="form-check-label" for="id-updateitem-colortype1">단색</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="colortype" id="id-updateitem-colortype2" value="false">
+                  <label class="form-check-label" for="id-updateitem-colortype2">복합</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <label for="id-updateitem-texture">재질</label>
+              <input class="form-control" type="text" name="texture" id="id-updateitem-texture">
+            </div>
+            <div class="col-2">
+              <label for="id-updateitem-brand">브랜드</label>
+              <input class="form-control" type="text" name="brand" id="id-updateitem-brand">
+            </div>
+            <div class="col-5">
+              <label for="id-updateitem-desc">메모</label>
+              <textarea rows="3" class="form-control" name="descript" id="id-updateitem-desc" placeholder="메모를 작성하세요."></textarea>
+            </div>
+          </div><!-- 셋째 줄 end-->
+          <input type="hidden" name="url" id="id-updateitem-url"/>
+          <input type="hidden" name="cid" id="id-updateitem-id" value=""/>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-primary" id="id-btn-updateitem">수정</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

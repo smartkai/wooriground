@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  Swal.fire({
+  width: 350,
+  icon: 'error',
+  title: 'Oops...',
+  text: '입력 정보를 다시 확인해 주세요:(',
+  confirmButtonText:'확인',
+}).then(()=>{window.history.back()})
+      });
+
+</script>
+<body>
+
+</body>
+</html>

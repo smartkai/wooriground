@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}우리그라운드CoP-코디 보기{% endblock %}
+{% block local_head_resources %}
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/narrow.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/bg-white.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/char-win.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/wardrobe-coordi-detail.css' %}">
+{% endblock %}
+{% block bg %}
+{% endblock %}
+{% block content %}
+  {% include 'hipdrobe/include/_wardrobe-link.html' %}
+  <div class="container-fluid content-wrap ctnt-center">
+    <!-- main content section -->
+    <div class="content-main">
+      <br>
+      <div class="row mb-3">
+        <div class="col-8">
+          <h3 class="heading">My Coordi Detail</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="card-group">
+          <div class="card">
+          </div>
+        </div>
+      </div>
+
+      <div class="row btn-wrapper">
+        <div class="btn-group">
+
+          <a href="javascript:history.back()" class="btn btn-primary">돌아가기</a>
+          <a href="{% url 'hipdrobe:coordi_update' data.id %}" class="btn btn-warning">수정하기</a>
+          <button class="btn btn-danger" onclick="confirmDelete(event)">삭제하기</button>
+    
+        </div>
+      </div>
+    </div>
+
+
+    
+
+    <!-- info section -->
+    <div class="content-info">
+      <div>
+        <p>T</p>
+        <p>B</p>
+        <p>D</p>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" value="{{data}}" id="hidden-data"/>
+  <div class="modal fade" id="id-modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">정말 삭제할까요?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        삭제한 코디는 다시 되돌릴 수 없습니다.<br>
+        정말 삭제할까요?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-danger" onclick="deleteCoordi(event)">삭제하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block content-bottom %}
+  {% include 'hipdrobe/include/_wardrobe-additem.html' %}
+  {% include 'hipdrobe/include/_items_modal.html' %}
+{% endblock %}
+{% block local_body_resources %}
+  <script src="{% static 'hipdrobe/third-party-etc/displace.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/char-win.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/apis-cruditem.js' %}"></script>
+  <script src="{% static 'hipdrobe/js/wardrobe-coordi-detail.js' %}"></script>
+{% endblock %}
+

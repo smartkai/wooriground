@@ -1,0 +1,45 @@
+{% load static %}
+<div class="modal fade" id="detail_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title detail" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+            
+      <div class="modal-body" id="detail_body">
+        {% csrf_token %}
+        <div class="d_wrapper1">
+          <div id="d_image_wrap">
+            <!-- 이미지 들어갈 자리 -->
+          </div>
+          <form action="#" id="id-form-detail">
+            <div id="d_info_wrap">
+              <ul class="d_info_p">
+                <li class="d_info" id="cate"> 종류 :  </li>
+                <li class="d_info" id="descript"> 옷 설명 : </li>
+                <li class="d_info" id="brand"> 브랜드 : </li>
+                <li class="d_info" id="color"> 색깔 : <input type="color" name="color" value=""></li>
+                <li class="d_info" id="pattern"> 패턴 :  </li>
+                <li class="d_info" id="texture"> 재질 : </li>
+                <li class="d_info" id="season"> 계절 : </li>
+                <li class="d_info" id="count"> 입은 횟수 :  </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+          <div class="d_wrapper2">
+            <div id="button_wrap">
+              <button id="update_item"> 수정 </button>
+              <button id="delete_btn"> 삭제 </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

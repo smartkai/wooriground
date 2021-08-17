@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}우리그라운드CoP-힙스탯{% endblock %}
+{% block local_head_resources %}
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/narrow.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/bg-white.css' %}">
+  <link rel="stylesheet" href="{% static 'hipdrobe/css/wardrobe-stat.css' %}">
+{% endblock %}
+{% block bg %}
+{% endblock %}
+{% block content %}
+  {% include 'hipdrobe/include/_wardrobe-link.html' %}
+  <div class="container-fluid content-wrap ctnt-center">
+    <!-- main content section -->
+    <div class="content-main">
+        <h3>content-main</h3>
+    </div>
+
+    <!-- info section -->
+    <div class="content-info">
+      <p>content-info</p>
+      <p>content-info</p>
+      <p>content-info</p>
+      <p>content-info</p>
+      <p>content-info</p>
+      <p>content-info</p>
+      <p>content-info</p>
+      <p>content-info</p>
+    </div>
+  </div>
+{% endblock %}
+{% block content-bottom %}
+{% endblock %}
+{% block local_body_resources %}
+  <script src="{% static 'hipdrobe/js/wardrobe-stat.js' %}"></script>
+{% endblock %}
+
