@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- global resources -->
+    <link rel="shortcut icon" href="{% static 'hipdrobe/favicon/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'hipdrobe/favicon/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'hipdrobe/css/global.css' %}" />
+    
+    
+    
+
+
+
+    <!-- local resources -->
+    {% block local_head_resources %}
+    {% endblock %}
+</head>
+
+<body>
+    <div id="loading">
+        <img src="{% static 'hipdrobe/img/square-grid-loader.svg' %}"/>
+    </div>
+    
+    <!-- Wrapper -->
+    <div class="wrapper">
+        {% block bg %}
+        {% endblock %}
+
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="{% url 'hipdrobe:index' %}">
+                    <!--div id="brand-main">WFIS</div-->
+                    
+                    <h1 class="ml7">
+                        <!--img src="{% static 'hipdrobe/img/brand.png' %}" width="145" height="45" class="d-inline-block align-top" alt=""-->
+                        <span class="text-wrapper">
+                          우리그라운드CoP
+                        </span>
+                      </h1>
+                </a>
+            </div>
+            <ul class="list-unstyled components">
+                <li id="main-ln-wardrobe" class="">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">나만의 옷장</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="{% url 'hipdrobe:items' %}">내 옷장 보기</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'hipdrobe:coordi' %}"> 코디 작성</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'hipdrobe:stat' %}">(TEST)힙-스탯</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">(TEST)랭킹 보기</a>
+                </li>
+                <li>
+                    <a href="#">(TEST)입는다그램</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content-->
+        <div id="content">
+            <nav id="id-nav-narrow" class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'hipdrobe/img/brand.png' %}" width="45" height="45" class="d-inline-block align-top" alt="">
+                    우리그라운드CoP
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        {% if user.is_active %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{user.username}}님 환영합니다</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'hipdrobe:logout' %}">로그아웃</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'hipdrobe:signin' %}">로그인</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'hipdrobe:signup' %}">회원가입</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            나만의 옷장
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{% url 'hipdrobe:items' %}">내 옷장 보기</a>
+                            <a class="dropdown-item" href="{% url 'hipdrobe:coordi' %}">코디 작성</a>
+                            <a class="dropdown-item" href="{% url 'hipdrobe:stat' %}">(TEST)힙-스탯</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">(TEST)랭킹 보기</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">(TEST)입는다그램</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <nav id="id-div-nav-sub" class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <div>
+                        <p id="page-title"></p>&nbsp;&nbsp;<p id="page-title-sub"></p>
+                    </div>
+                    <div id="log-section">
+                        <ul>
+                        <li class="login-info" style="font-size:2em;">
+                            <!-- <a data-toggle="modal" href="#exampleModal">로그인</a> -->
+                            {% if user.is_active %}
+                            <li><a href="{%url 'hipdrobe:signin' %}"> <span class="glyphicon glyphicon-heart"></span></a></li>
+                            <span>{{user.username}}님 환영합니다</span>
+                            <li><a href="{% url 'hipdrobe:logout' %}">로그아웃</a></li>
+                                
+                            {% else %}
+                            <li><a href="{% url 'hipdrobe:signin' %}"> <span class="glyphicon glyphicon-user"></span> 로그인</a></li>
+                            <li><a class="nav-link" href="{% url 'hipdrobe:signup' %}">회원가입</a></li>
+                            {% endif %}
+                        </li>
+                            
+                                
+                            </li>
+
+                            <li class="meta-info2" style="font-size:2em;">
+                                도움말
+                            </li>
+                            <li class="meta-info2">
+                                <div class="icon">
+                                    <i class="fas fa-comment-alt" style="font-size:1.3em;"></i>
+                                </div>
+                                <div class="num">
+                                    <span id="alert-cnt">0</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>                    
+                </div>
+            </nav>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    {% block content-bottom %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer id="footer">
+        <hr>
+        <div class="footer-wrap">
+            <div>
+                <p>
+                    <span class="foot-team">우리그라운드CoP</span> <span class="italic">all right reserved</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    {% include 'hipdrobe/include/_success_modal.html' %}
+
+    <!-- global body resources -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <!-- text effect -->
+    <script src="{% static 'hipdrobe/js/global.js' %}"></script>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+    <!-- local body resources -->
+    {% block local_body_resources %}
+    {% endblock %}
+</body>
+
+</html>
